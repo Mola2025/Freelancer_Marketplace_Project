@@ -1,0 +1,63 @@
+<!-- Background -->
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+
+    <!-- Card  -->
+    <div class="container">
+
+        <div class="flex items-center justify-between mb-8">
+            <h1 class="text-3xl font-black text-white tracking-tight">
+                Skill<span class="text-amber-400">Swap</span>
+            </h1>
+
+            <button (click)="logout()" class="text-amber-400 hover:text-amber-600 transition">
+                Logout
+            </button>
+        </div>
+
+        <p *ngIf="isLoading" class="text-center text-slate-400">Loading user data...</p>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <div *ngIf="!isLoading && user" class="user-card">
+            <div class="info">
+
+                <h3> <strong>NAME:</strong> {{ user.name }}</h3>
+                <p><strong>USERNAME: </strong>{{ user.username }}</p>
+
+                <div class="border-t border-slate-700 my-3"></div>
+
+                <p class="text-slate-400 text-xs  tracking-widest  mb-1"><strong>BIO:</strong> {{
+                    user.bio }}</p>
+
+                <div class="border-t border-slate-700 my-3"></div>
+
+                <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold mb-2"><strong>Skills:</strong>
+                </p>
+                <div>
+                    <span *ngFor="let skill of user.skills" class="skill-tag">
+                        {{ skill }}
+                    </span>
+                </div>
+
+                <div class="border-t border-slate-700 my-3"></div>
+
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <div class="bg-slate-900 rounded-xl p-4 text-center">
+                        <p class="text-amber-400 text-2xl font-black"> {{ user.rating_avg}}</p>
+                        <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold">Rating</p>
+                    </div>
+                    <div class="bg-slate-900 rounded-xl p-4 text-center">
+                        <p class="text-amber-400 text-2xl font-black"> {{ user.completed_jobs }}</p>
+                        <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold">Completed Jobs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
