@@ -1,0 +1,23 @@
+<nav class="navbar">
+  <h1 class="text-3xl font-black text-white tracking-tight">
+    Skill<span class="text-amber-400">Swap Application</span>
+  </h1>
+  <div class="navbar-menu">
+    <ng-container *ngIf="isLoggedIn">
+      <a routerLink="/jobs" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">Jobs</a>
+      <a routerLink="/jobs/new" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">Post Job</a>
+      <a routerLink="/profile" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">Profile</a>
+      <button (click)="logout()" class="nav-link btn-logout">Logout</button>
+    </ng-container>
+
+    <ng-container *ngIf="!isLoggedIn">
+      <a routerLink="/login" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">Login</a>
+      <a routerLink="/register" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">Register</a>
+    </ng-container>
+  </div>
+</nav>

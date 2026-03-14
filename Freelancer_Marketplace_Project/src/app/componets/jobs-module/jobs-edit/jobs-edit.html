@@ -1,0 +1,56 @@
+<!-- Background -->
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="form-container">
+        <div class="mb-8">
+            <a routerLink="/jobs" class="text-amber-400 hover:text-amber-300 text-sm transition">← Back to Jobs</a>
+            <h1 class="text-3xl font-black text-white tracking-tight">
+                Edit <span class="text-amber-400">Job</span>
+            </h1>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="submit()" class="flex flex-col gap-5">
+            <div class="field-group">
+                <label class="field-label">Title</label>
+                <input type="text" class="field-input" [(ngModel)]="formData.title" name="title"
+                    placeholder="Enter job title" />
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Description</label>
+                <textarea rows="4" class="field-input" [(ngModel)]="formData.description" name="description"
+                    placeholder="Enter job description"></textarea>
+            </div>
+
+            <div class="flex gap-4">
+                <div class="field-group flex-1">
+                    <label class="field-label">Budget ($)</label>
+                    <input type="number" class="field-input" [(ngModel)]="formData.budget" name="budget" placeholder="
+                        e.g. 500" min="1" />
+                </div>
+
+                <div class="field-group flex-1">
+                    <label class="field-label">Category</label>
+                    <input type="text" class="field-input" [(ngModel)]="formData.category" name="category"
+                        placeholder="e.g. Web Development" />
+                </div>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Status</label>
+                <select [(ngModel)]="formData.status" name="status" class="field-input"
+                    title="Select Status (Open /In Progress / Completed)">
+                    <option *ngFor="let s of statusOptions" [value]="s">{{ s }}</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-submit mt-2" [disabled]="submitting"> {{ submitting ? 'Updating...' :
+                'Update Job' }}</button>
+        </form>
+    </div>
+</div>

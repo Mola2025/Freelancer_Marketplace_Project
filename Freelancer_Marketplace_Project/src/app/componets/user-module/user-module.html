@@ -5,14 +5,11 @@
     <!-- Card  -->
     <div class="container">
 
-        <div class="flex items-center justify-between mb-8">
-            <h1 class="text-3xl font-black text-white tracking-tight">
-                Skill<span class="text-amber-400">Swap</span>
-            </h1>
-
-            <button (click)="logout()" class="text-amber-400 hover:text-amber-600 transition">
-                Logout
-            </button>
+        <!-- Search Bar For Search User (Public Profile GET/users/{username}) -->
+        <div class="search-bar">
+            <input [(ngModel)]="searchUsername" placeholder="Search for a user (Username)"
+                (keydown.enter)="searchUser()" type="text" class="search-input" />
+            <button class="search-btn" (click)="searchUser()">Search</button>
         </div>
 
         <p *ngIf="isLoading" class="text-center text-slate-400">Loading user data...</p>
@@ -53,6 +50,25 @@
                     <div class="bg-slate-900 rounded-xl p-4 text-center">
                         <p class="text-amber-400 text-2xl font-black"> {{ user.completed_jobs }}</p>
                         <p class="text-slate-400 text-xs uppercase tracking-widest font-semibold">Completed Jobs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="myJobs.length > 0" class="user-card mt-6">
+            <div class="info">
+                <h3 class="text-white font-bold mb-4">My Posted Jobs</h3>
+
+                <div *ngFor="let job of myJobs"
+                    class="flex items-center justify-between py-3 border-b border-slate-700 last:border-0">
+                    <div>
+                        <p class="text-white text-sm font-semibold">{{ job.title }}</p>
+                        <p class="text-slate-400 text-xs">{{ job.category }} — ${{ job.budget }}</p>
+                    </div>
+                    <div class="flex gap-2 items-center">
+                        <span [ngClass]="'status-badge status-' + job.status">{{ job.status }}</span>
+                        <a [routerLink]="['/jobs', job.id]"
+                            class="text-amber-400 text-xs hover:text-amber-300 transition">View →</a>
                     </div>
                 </div>
             </div>
