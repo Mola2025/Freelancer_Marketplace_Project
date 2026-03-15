@@ -20,6 +20,7 @@ export class JobsList {
   //Filters
   filterCategory: string = '';
   filterMinBudget: number | null = null;
+  filterStatus: string = '';
 
   constructor(private readonly jobService: JobService, private readonly userService: UserService, private readonly router: Router, private readonly authModule: AuthModule) {
     this.userService.getMe().subscribe({
@@ -44,9 +45,34 @@ export class JobsList {
     if (this.filterMinBudget !== null) {
       filters.min_budget = this.filterMinBudget;
     }
-    this.jobService.searchJobs(filters).subscribe({
-      next: (res) => {
-        this.jobs = res;
+    // If user selected a status filter, only fetch jobs with that status
+    if (this.filterStatus) {
+      this.jobService.searchJobs({ ...filters, status: this.filterStatus }).subscribe({
+        next: (jobs) => {
+          this.jobs = jobs;
+        },
+        error: (err) => {
+          console.error('Error fetching jobs:', err);
+          this.errorMessage = err.error.error || 'An error occurred while fetching jobs.';
+        }
+      });
+      return;
+    }
+
+
+    //No status filter 
+    this.jobService.searchJobs({ ...filters, status: 'open' }).subscribe({
+      next: (openJobs) => {
+        this.jobs = openJobs;
+        this.jobService.searchJobs({ ...filters, status: 'in_progress' }).subscribe({
+          next: (inProgressJobs) => {
+            this.jobs = [...this.jobs, ...inProgressJobs];
+          },
+          error: (err) => {
+            console.error('Error fetching in-progress jobs:', err);
+            this.errorMessage = err.error.error || 'An error occurred while fetching in-progress jobs.';
+          }
+        });
       },
       error: (err) => {
         console.error('Error fetching jobs:', err);
@@ -58,6 +84,7 @@ export class JobsList {
   clearFilters() {
     this.filterCategory = '';
     this.filterMinBudget = null;
+    this.filterStatus = '';
     this.loadJobs();
   }
 

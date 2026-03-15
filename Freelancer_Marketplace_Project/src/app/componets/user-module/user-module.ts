@@ -29,9 +29,18 @@ export class UserModule {
 
   loadUser() {
     this.userService.getMe().subscribe({
-      next: (res) => {
-        this.user = res;
-        this.isLoading = false;
+      next: (me) => {
+        this.userService.getUserByUsername(me.username).subscribe({
+          next: (fullProfile) => {
+            this.user = fullProfile;
+            this.isLoading = false;
+          },
+          error: (err) => {
+            // Return Basic User Data
+            this.user = me;
+            this.isLoading = false;
+          }
+        });
       },
       error: (err) => {
         console.log(err);

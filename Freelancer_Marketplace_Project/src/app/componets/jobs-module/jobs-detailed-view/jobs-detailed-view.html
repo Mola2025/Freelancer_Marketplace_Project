@@ -26,11 +26,12 @@
             <div class="flex flex-wrap gap-3">
                 <a *ngIf="isOwner()" [routerLink]="['/jobs', job.id, 'edit']" class="btn btn-primary">Edit Job</a>
 
-                <a *ngIf=" job.status === 'open'" [routerLink]="['/jobs', job.id, 'proposal']"
-                    class="btn btn-primary">Submit Proposal</a>
+                <a *ngIf=" job.status === 'open' && isOwner()" [routerLink]="['/jobs', job.id, 'proposals']"
+                    class="btn btn-primary">View Proposals</a>
 
                 <button *ngIf="job.status === 'in_progress' && isOwner()" (click)="markJobCompleted()"
                     class="btn btn-primary">Mark Completed</button>
+
             </div>
         </div>
 

@@ -1,0 +1,36 @@
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="max-w-3xl mx-auto w-full">
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl font-black text-white tracking-tight mt-2">
+                Platform <span class="text-amber-400">Statistics</span>
+            </h1>
+            <p class="text-slate-400 text-sm mt-2"> View the current statistics of the platform</p>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <p *ngIf="isLoading" class="text-center text-slate-400 mt-20">Loading statistics...</p>
+
+        <div *ngIf="!isLoading && stats" class="stats-grid">
+            <div class="stats-card">
+                <p class="stat-value">{{stats.total_users}}</p>
+                <p class="stat-label">Total Users</p>
+            </div>
+
+            <div class="stats-card">
+                <p class="stat-value">{{stats.active_jobs}}</p>
+                <p class="stat-label">Total Active Jobs</p>
+            </div>
+
+            <div class="stats-card">
+                <p class="stat-value">{{stats.total_value_moved | number}}</p>
+                <p class="stat-label">Total Value Moved</p>
+            </div>
+        </div>
+
+    </div>
+</div>

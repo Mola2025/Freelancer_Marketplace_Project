@@ -1,9 +1,9 @@
 <!-- Background -->
 <div
-    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4 mb-4">
     <div class="max-w-4xl mx-auto">
 
-        <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center justify-between mb-8 mt-4">
             <h1 class="text-3xl font-black text-white tracking-tight">
                 Available<span class="text-amber-400">Jobs</span>
             </h1>
@@ -13,6 +13,12 @@
         <div class="flex flex-wrap gap-3 mb-8">
             <input type="text" placeholder="Category" [(ngModel)]="filterCategory" class="filter-input" />
             <input type="number" placeholder="Min Budget" [(ngModel)]="filterMinBudget" class="filter-input" />
+            <select [(ngModel)]="filterStatus" class="filter-input" name="status" title="status">
+                <option value="">All Status</option>
+                <option value="open">Open</option>
+                <option value="in_progress">In Progress</option>
+                <option value="completed">Completed</option>
+            </select>
             <button (click)="loadJobs()" class="btn btn-primary">Search</button>
         </div>
 
@@ -51,6 +57,11 @@
 
                     <a *ngIf="!isOwner(job) && job.status === 'open'" [routerLink]="['/jobs', job.id, 'proposal']"
                         class="btn btn-primary">Apply</a>
+
+                    <a *ngIf="job.status === 'completed' && (isOwner(job) || isAssignedFreelancer(job))"
+                        [routerLink]="['/jobs', job.id, 'review']" class="btn-outline">
+                        Leave a Review
+                    </a>
                 </div>
             </div>
         </div>

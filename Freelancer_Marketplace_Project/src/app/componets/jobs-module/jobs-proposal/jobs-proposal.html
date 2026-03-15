@@ -1,0 +1,46 @@
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="form-container">
+        <div class="mb-8">
+            <a [routerLink]="['/jobs', jobId]" class="text-amber-400 hover:text-amber-600 transition">← Back to Job</a>
+            <h1 class="text-3xl font-black text-white tracking-tight mt-2">
+                Submit a <span class="text-amber-400">Proposal</span>
+            </h1>
+            <p *ngIf="jobTitle" class="text-slate-400 text-sm mt-1"> For: {{ jobTitle }}</p>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="submit()" class="flex flex-col gap-5">
+            <div class="field-group">
+                <label class="field-label">Your Price ($)</label>
+                <input type="number" class="field-input" [(ngModel)]="formData.price" name="price" placeholder="
+                    e.g. 500" min="1" />
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Cover Letter</label>
+                <textarea rows="5" class="field-input" [(ngModel)]="formData.cover_letter" name="cover_letter"
+                    placeholder="Describe your skills and experience and why you are a good fit for this job"></textarea>
+            </div>
+
+            <div class="or-divider">
+                <span>OR</span>
+            </div>
+
+            <div class="field-group">
+                <label class="field-label">Message</label>
+                <textarea rows="3" class="field-input" [(ngModel)]="formData.message" name="message"
+                    placeholder="Send a message to the employer"></textarea>
+            </div>
+
+            <p class="text-slate-500 text-xs -mt-2">* At least one field is required ( Cover Letter or Message ).</p>
+
+            <button type="submit" class="btn-submit mt-2" [disabled]="submitting"> {{ submitting ? 'Submitting...' :
+                'Submit Proposal' }}</button>
+        </form>
+    </div>
+</div>

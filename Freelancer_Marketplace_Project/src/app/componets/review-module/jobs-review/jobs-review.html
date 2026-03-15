@@ -1,0 +1,42 @@
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="form-container">
+        <div class="mb-8">
+            <a [routerLink]="['/jobs']" class="text-amber-400 hover:text-amber-600 transition">← Back to Jobs</a>
+            <h1 class="text-3xl font-black text-white tracking-tight mt-2">
+                Leave a <span class="text-amber-400">Review</span>
+            </h1>
+            <p *ngIf="jobTitle" class="text-slate-400 text-sm mt-1"> For: {{ jobTitle }}</p>
+            <p *ngIf="targetName" class="text-slate-400 text-sm">Reviewing: <span class="text-white font-semibold">{{
+                    targetName }}</span></p>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <form (ngSubmit)="submit()" class="flex flex-col gap-5">
+            <div class="field-group">
+                <label class="field-label">Rating</label>
+                <div class="rating-group">
+
+                    <button *ngFor="let star of ratingOptions" type="button" (click)="formData.rating = star"
+                        [ngClass]="formData.rating !== null && star <= formData.rating ? 'star active' : 'star'">★</button>
+                </div>
+                <p class="text-slate-500 text-xs mt-1">* Required - Select between 1 to 5 stars</p>
+            </div>
+
+            <div class=" field-group">
+                <label class="field-label">Comment <span class="text-slate-500 text-xs"> (Optional)</span></label>
+                <textarea rows="4" class="field-input" [(ngModel)]="formData.comment" name="comment"
+                    placeholder="Describe your experience with this freelancer"></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit mt-2" [disabled]="submitting || formData.rating === null"> {{
+                submitting ?
+                'Submitting...' :
+                'Submit Review' }}</button>
+        </form>
+    </div>
+</div>

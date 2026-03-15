@@ -9,6 +9,13 @@ import { JobsList } from './componets/jobs-module/jobs-list/jobs-list';
 import { JobsForm } from './componets/jobs-module/jobs-form/jobs-form';
 import { JobsDetailedView } from './componets/jobs-module/jobs-detailed-view/jobs-detailed-view';
 import { JobsEdit } from './componets/jobs-module/jobs-edit/jobs-edit';
+import { JobsProposal } from './componets/jobs-module/jobs-proposal/jobs-proposal';
+import { JobsProposalList } from './componets/jobs-module/jobs-proposal-list/jobs-proposal-list';
+import { MyBids } from './componets/proposal-module/my-bids/my-bids';
+import { JobsReview } from './componets/review-module/jobs-review/jobs-review';
+import { MyReviews } from './componets/review-module/my-reviews/my-reviews';
+import { PlatformStats } from './componets/platform-module/platform-stats/platform-stats';
+
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -20,4 +27,10 @@ export const routes: Routes = [
     { path: 'jobs/new', component: JobsForm, canActivate: [AuthGuard] },
     { path: 'jobs/:id', component: JobsDetailedView, canActivate: [AuthGuard] },
     { path: 'jobs/:id/edit', component: JobsEdit, canActivate: [AuthGuard] },
+    { path: 'jobs/:id/proposal', component: JobsProposal, canActivate: [AuthGuard] },
+    { path: 'jobs/:id/proposals', component: JobsProposalList, canActivate: [AuthGuard] },
+    { path: 'jobs/:id/review', component: JobsReview, canActivate: [AuthGuard] },
+    { path: 'my-bids', component: MyBids, canActivate: [AuthGuard] },
+    { path: 'my-reviews', component: MyReviews, canActivate: [AuthGuard] },
+    { path: 'stats', component: PlatformStats },
 ];

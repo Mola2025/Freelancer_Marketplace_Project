@@ -3,11 +3,18 @@
     Skill<span class="text-amber-400">Swap Application</span>
   </h1>
   <div class="navbar-menu">
+    <a routerLink="/stats" routerLinkActive="active" class="nav-link"
+      [routerLinkActiveOptions]="{ exact: true }">Stats</a>
     <ng-container *ngIf="isLoggedIn">
       <a routerLink="/jobs" routerLinkActive="active" class="nav-link"
         [routerLinkActiveOptions]="{ exact: true }">Jobs</a>
       <a routerLink="/jobs/new" routerLinkActive="active" class="nav-link"
         [routerLinkActiveOptions]="{ exact: true }">Post Job</a>
+      <a routerLink="/my-bids" routerLinkActive="active" class="nav-link" [routerLinkActiveOptions]="{ exact: true }">My
+        Bids</a>
+      <a routerLink="/my-reviews" routerLinkActive="active" class="nav-link"
+        [routerLinkActiveOptions]="{ exact: true }">My
+        Reviews</a>
       <a routerLink="/profile" routerLinkActive="active" class="nav-link"
         [routerLinkActiveOptions]="{ exact: true }">Profile</a>
       <button (click)="logout()" class="nav-link btn-logout">Logout</button>
