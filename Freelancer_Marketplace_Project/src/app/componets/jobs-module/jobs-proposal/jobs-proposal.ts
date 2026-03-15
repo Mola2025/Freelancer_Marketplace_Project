@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
-import { JobService } from '../../../service/job-service';
-import { UserService } from '../../../service/user-service';
+import { JobService } from '../../../core/service/job-service';
+import { UserService } from '../../../core/service/user-service';
 import { FormsModule } from '@angular/forms';
-import { ProposalService } from '../../../service/proposal-service';
+import { ProposalService } from '../../../core/service/proposal-service';
 
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UserService, User } from '../../service/user-service';
+import { UserService, User } from '../../core/service/user-service';
 
 @Component({
   selector: 'app-public-user',

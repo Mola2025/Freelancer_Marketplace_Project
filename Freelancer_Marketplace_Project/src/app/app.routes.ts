@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { Login } from './componets/login/login';
 import { Register } from './componets/register/register';
-import { GuestGuard } from './guards/Guest_guard';
-import { AuthGuard } from './guards/Auth_guard';
+import { GuestGuard } from './core/guards/Guest_guard';
+import { AuthGuard } from './core/guards/Auth_guard';
 import { UserModule } from './componets/user-module/user-module';
 import { PublicUser } from './componets/public-user/public-user';
 import { JobsList } from './componets/jobs-module/jobs-list/jobs-list';

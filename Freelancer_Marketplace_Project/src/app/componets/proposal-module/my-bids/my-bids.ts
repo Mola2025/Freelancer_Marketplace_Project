@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Proposal, ProposalService } from '../../../service/proposal-service';
-import { AuthModule } from '../../../service/auth-module';
+import { Proposal, ProposalService } from '../../../core/service/proposal-service';
+import { AuthModule } from '../../../core/service/auth-module';
 
 
 @Component({

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { User, UserService } from '../../service/user-service';
+import { User, UserService } from '../../core/service/user-service';
 import { Router, RouterLink } from '@angular/router';
-import { AuthModule } from '../../service/auth-module';
+import { AuthModule } from '../../core/service/auth-module';
 import { FormsModule } from '@angular/forms';
-import { Job, JobService } from '../../service/job-service';
+import { Job, JobService } from '../../core/service/job-service';
 
 @Component({
   selector: 'app-user-module',

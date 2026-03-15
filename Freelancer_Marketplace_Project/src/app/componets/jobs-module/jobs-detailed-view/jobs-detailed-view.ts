@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
-import { Job, JobService } from '../../../service/job-service';
-import { UserService } from '../../../service/user-service';
+import { Job, JobService } from '../../../core/service/job-service';
+import { UserService } from '../../../core/service/user-service';
 @Component({
   selector: 'app-jobs-detailed-view',
   imports: [CommonModule, RouterLink],

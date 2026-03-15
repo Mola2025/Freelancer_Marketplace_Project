@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Review, ReviewService } from '../../../service/review-service';
-import { UserService } from '../../../service/user-service';
-import { AuthModule } from '../../../service/auth-module';
+import { Review, ReviewService } from '../../../core/service/review-service';
+import { UserService } from '../../../core/service/user-service';
+import { AuthModule } from '../../../core/service/auth-module';
 
 
 @Component({

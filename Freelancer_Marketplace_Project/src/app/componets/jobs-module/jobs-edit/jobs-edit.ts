@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { JobService } from '../../../service/job-service';
+import { JobService } from '../../../core/service/job-service';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../../service/user-service';
+import { UserService } from '../../../core/service/user-service';
 
 
 

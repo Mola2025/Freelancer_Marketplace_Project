@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink, ActivatedRoute } from '@angular/router';
-import { ReviewService } from '../../../service/review-service';
-import { JobService } from '../../../service/job-service';
-import { UserService } from '../../../service/user-service';
+import { ReviewService } from '../../../core/service/review-service';
+import { JobService } from '../../../core/service/job-service';
+import { UserService } from '../../../core/service/user-service';
 
 @Component({
   selector: 'app-jobs-review',

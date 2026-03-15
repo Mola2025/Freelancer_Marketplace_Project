@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { JobService } from '../../../service/job-service';
+import { JobService } from '../../../core/service/job-service';
 
 @Component({
   selector: 'app-jobs-form',

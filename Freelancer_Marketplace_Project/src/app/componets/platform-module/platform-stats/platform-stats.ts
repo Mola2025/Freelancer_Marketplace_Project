@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { platformStats, PlatformService } from '../../../service/platform-service';
+import { platformStats, PlatformService } from '../../../core/service/platform-service';
 
 
 @Component({

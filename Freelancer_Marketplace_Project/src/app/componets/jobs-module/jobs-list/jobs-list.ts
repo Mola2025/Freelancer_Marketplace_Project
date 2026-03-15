@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { UserService } from '../../../service/user-service';
+import { UserService } from '../../../core/service/user-service';
 import { FormsModule } from '@angular/forms';
-import { Job, JobService } from '../../../service/job-service';
-import { AuthModule } from '../../../service/auth-module';
+import { Job, JobService } from '../../../core/service/job-service';
+import { AuthModule } from '../../../core/service/auth-module';
 
 @Component({
   selector: 'app-jobs-list',
