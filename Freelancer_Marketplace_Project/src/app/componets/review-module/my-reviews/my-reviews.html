@@ -1,0 +1,43 @@
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="max-w-3xl mx-auto w-full">
+        <div class=" flex items-center justify-between mb-8">
+            <h1 class="text-3xl font-black text-white tracking-tight mt-2">
+                My <span class="text-amber-400">Reviews</span>
+            </h1>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <p *ngIf="isLoading" class="text-center text-slate-400 mt-20">Loading reviews...</p>
+        <p *ngIf="!isLoading && reviews.length === 0 && !errorMessage" class="text-center text-slate-400 mt-20">You have
+            no reviews yet</p>
+
+        <div class="flex flex-col gap-4">
+            <div *ngFor="let review of reviews" class="review-card">
+                <div class="flex items-start justify-between mb-3">
+                    <div class="flex gap-1">
+                        <span *ngFor="let star of getStars(review.rating)"
+                            [class]="star <= review.rating ? 'star active' : 'star'">★</span>
+                    </div>
+                    <span class="text-amber-400 text-xs">{{ review.created_at | date : 'mediumDate' }}</span>
+                </div>
+
+                <p class="text-slate-500 text-xs mb-2">From: <span class="text-slate-300">{{ review.reviewer_id}}</span>
+                </p>
+
+                <p *ngIf="review.comment" class="text-slate-300 text-sm leading-relaxed">
+                    {{ review.comment }}
+                </p>
+
+                <p *ngIf="!review.comment" class="text-slate-500 text-xs italic">
+                    No comment Left
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

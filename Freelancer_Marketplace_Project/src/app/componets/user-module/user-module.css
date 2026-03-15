@@ -1,0 +1,121 @@
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.error {
+    color: #f70707;
+    font-size: 0.9rem;
+}
+
+.user-card {
+    display: flex;
+    gap: 20px;
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid #334155;
+}
+
+.info {
+    flex: 1;
+    width: 100%;
+}
+
+.info h3 {
+    margin-top: 0;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+}
+
+.skill-tag {
+    display: inline-block;
+    background-color: #334155;
+    color: #cbd5e1;
+    border: 1px solid #475569;
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin: 5px;
+    font-size: 0.85rem;
+
+}
+
+/* Search Bar */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.search-input {
+    flex: 1;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    color: #cbd5e1;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #64748b;
+}
+
+.search-input:focus {
+    border-color: #3b82f6;
+}
+
+.search-btn {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #2563eb;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &.status-open {
+        background: #064e3b;
+        color: #37eaf0;
+    }
+
+    &.status-in_progress {
+        background: #1e3a5f;
+        color: #e4f03d;
+    }
+
+    &.status-completed {
+        background: #3b1f5e;
+        color: #6ee7b7;
+    }
+}

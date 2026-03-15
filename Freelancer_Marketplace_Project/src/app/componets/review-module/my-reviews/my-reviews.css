@@ -1,0 +1,20 @@
+.review-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: border-color 0.2s ease;
+
+    &:hover {
+        border-color: #f59e0b;
+    }
+}
+
+.star {
+    font-size: 1.4rem;
+    color: #334155;
+
+    &.active {
+        color: #f59e0b;
+    }
+}

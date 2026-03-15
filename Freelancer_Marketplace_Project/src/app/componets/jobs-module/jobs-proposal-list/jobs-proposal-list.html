@@ -1,0 +1,50 @@
+<div
+    class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-600 to-[#2a1f4a] flex items-center justify-center px-4">
+    <div class="max-w-3xl mx-auto w-full">
+        <div class="mb-8">
+            <a [routerLink]="['/jobs', jobId]" class="text-amber-400 hover:text-amber-600 transition">← Back to Job</a>
+            <h1 class="text-3xl font-black text-white tracking-tight mt-2">
+                Proposals <span class="text-amber-400">Recieved</span>
+            </h1>
+            <p *ngIf="jobTitle" class="text-slate-400 text-sm mt-1"> For: {{ jobTitle }}</p>
+        </div>
+
+        <div *ngIf="errorMessage"
+            class="mb-4 bg-red-900/40 border border-red-500/50 text-red-300 text-sm rounded-lg px-4 py-3">
+            {{ errorMessage }}
+        </div>
+
+        <p *ngIf="proposals.length === 0 && !errorMessage" class="text-center text-slate-400 mt-20">No Proposals
+            Received</p>
+
+        <div class="flex flex-col gap-4">
+            <div *ngFor="let proposal of proposals" class="proposal-card">
+                <div class="flex items-start justify-between gap-4 mb-3">
+                    <div>
+                        <a [routerLink]="['/users', proposal.freelancer?.username]"
+                            class="text-white font-bold text-lg hover:text-amber-400 transition">
+                            {{ proposal.freelancer_id }}</a>
+                        <!-- Since the API doesnt return the username i put the id instead of the username (Its risky but there is no other endpoint that returns the username) -->
+                        <p class="text-slate-400 text-xs">{{ proposal.freelancer?.username }}</p>
+                    </div>
+                    <span [ngClass]="'status-badge status-' + proposal.status">{{ proposal.status }}</span>
+                </div>
+
+                <div class="flex flex-wrap gap-3 mb-3">
+                    <span class="meta-chip price-chip">{{ proposal.price }}</span>
+                </div>
+
+                <p class="text-slate-300 text-sm leading-relaxed"><strong>Message: Or Cover Letter: </strong> {{
+                    proposal.cover_letter }}
+                </p>
+
+
+                <div class="flex flex-wrap gap-3 pt-4" *ngIf="proposal.status === 'pending'">
+                    <button (click)="acceptProposal(proposal.id)" class="btn-accept"
+                        [disabled]="acceptingId === proposal.id">{{ acceptingId === proposal.id ? 'Accepting...' :
+                        'Accept Proposal' }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
