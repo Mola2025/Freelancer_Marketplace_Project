@@ -25,6 +25,15 @@ export class Register {
   ) { }
 
   submit() {
+    // Validate required fields
+    if (!this.name || !this.username || !this.email || !this.password || !this.bio || !this.skills) {
+      this.errorMessage = 'All fields are required.';
+      return;
+    }
+
+    this.errorMessage = '';
+    this.suggestedUsername = '';
+
     const skillsArray = this.skills.split(',').map(skill => skill.trim()); // Clear any leading/trailing spaces and split into an array
     this.authModule.register(this.name, this.username, this.email, this.password, this.bio, skillsArray).subscribe({
       next: (res) => {
