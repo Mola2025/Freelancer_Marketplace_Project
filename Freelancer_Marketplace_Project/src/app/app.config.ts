@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { JWT_Auth_Interceptor } from './JWTInterceptor/JWT_Auth_Interceptor';
+import { JWT_Auth_Interceptor } from './core/JWTInterceptor/JWT_Auth_Interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
